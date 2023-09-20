@@ -4,7 +4,8 @@ import HeroBanner from './heroBanner/HeroBanner'
 function Home() {
   return (
     <div className='homePage'>
-      <HeroBanner/>
+      <HeroBanner />
+      <div style={{height: 1500}}></div>
     </div>
   )
 }
