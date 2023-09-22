@@ -5,26 +5,24 @@ import SwitchTab from "../../../components/switchTabs/SwitchTab";
 import useFetch from "../../../hooks/useFetch";
 import Carousel from "../../../components/carousel/Carousel";
 
-const Trending = () => {
+const Popular = () => {
   const api_key = import.meta.env.VITE_APP_TMDB_TOKEN;
-  const [endpoint, setEndpoint] = useState("day");
-  const { data, loading } = useFetch(
-    `/trending/all/${endpoint}?api_key=${api_key}`
-  );
+  const [endpoint, setEndpoint] = useState("movie");
+  const { data, loading } = useFetch(`/${endpoint}/popular?api_key=${api_key}`);
 
   const onTabChange = (tab) => {
-    setEndpoint(tab === "Day" ? "day" : "week");
+    setEndpoint(tab === "Movies" ? "movie" : "tv");
   };
 
   return (
     <div className="carouselSection">
       <ContentWrapper>
-        <span className="carouselTitle">Trending Shows</span>
-        <SwitchTab data={["Day", "Week"]} onTabChange={onTabChange} />
+        <span className="carouselTitle">Popular Shows</span>
+        <SwitchTab data={["Movies", "Tv Shows"]} onTabChange={onTabChange} />
       </ContentWrapper>
-      <Carousel data={data?.results} loading={loading} />
+      <Carousel data={data?.results} loading={loading} endpoint={endpoint} />
     </div>
   );
 };
 
-export default Trending;
+export default Popular;
