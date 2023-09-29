@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
 import "./style.scss";
@@ -27,7 +26,7 @@ const VideosSection = ({ data, loading }) => {
     <div className="videosSection">
       <ContentWrapper>
         <div className="sectionHeading">Official Videos</div>
-        {!loading ? (
+        {!!loading ? (
           <div className="videos">
             {/* data.results ahve some issues */}
             {data?.results?.map((video) => {
@@ -44,6 +43,7 @@ const VideosSection = ({ data, loading }) => {
                     src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
                   />
                   <PlayIcon />
+                  <div className="videoTitle">{video.name}</div>
                 </div>
               </div>;
             })}
