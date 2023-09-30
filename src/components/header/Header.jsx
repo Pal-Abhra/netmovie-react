@@ -8,7 +8,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./style.scss";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import logo from "../../assets/movix-logo.svg";
+import logo from "../../assets/image (1).png";
 
 const Header = () => {
   const [show, setShow] = useState("top");
@@ -51,7 +51,11 @@ const Header = () => {
       }, 1000);
     }
   };
-
+  const searchQueryHandlerbyClick = () => {
+    if (query.length > 0) {
+      navigate(`/search/${query}`);
+    }
+  };
   const openSearch = () => {
     setMobileMenu(false);
     setShowSearch(true);
@@ -102,9 +106,10 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="Search for a movie or TV show..."
-                onChange={(e) => setquery(e.target.value)}
+                onChange={(e) => setQuery(e.target.value)}
                 onKeyUp={searchQueryHandler}
               />
+              <HiOutlineSearch onClick={searchQueryHandlerbyClick} />
               <VscChromeClose onClick={() => setShowSearch(false)} />
             </div>
           </ContentWrapper>

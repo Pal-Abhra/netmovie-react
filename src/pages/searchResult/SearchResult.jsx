@@ -28,19 +28,19 @@ const SearchResult = () => {
     });
   };
   const fetchNextPageData = () => {
-    fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then(
-      (res) => {
-        if (data?.results) {
-          setData({
-            ...data,
-            results: [...data?.results, ...res.results],
-          });
-        } else {
-          setData(res);
-        }
-        setPageNum((prev) => prev + 1);
+    fetchDataFromApi(
+      `/search/multi?query=${query}&page=${pageNum}&api_key=${api_key}`
+    ).then((res) => {
+      if (data?.results) {
+        setData({
+          ...data,
+          results: [...data?.results, ...res.results],
+        });
+      } else {
+        setData(res);
       }
-    );
+      setPageNum((prev) => prev + 1);
+    });
   };
   useEffect(() => {
     setPageNum(1);
@@ -75,9 +75,7 @@ const SearchResult = () => {
               </InfiniteScroll>
             </>
           ) : (
-            <span className="resultNotFound">
-              Sorry, Results not found! noResultsnoResults ${noResults}
-            </span>
+            <span className="resultNotFound">Sorry, Results not found!</span>
           )}
         </ContentWrapper>
       )}

@@ -22,7 +22,6 @@ const Details = () => {
       <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
       <Cast data={credits?.cast} loading={creditsLoading} />
       <VideosSection data={data} loading={loading} />{" "}
-      {/* Video Section has some issues */}
       <Similar mediaType={mediaType} id={id} />
       <Recommendation mediaType={mediaType} id={id} />
     </div>
