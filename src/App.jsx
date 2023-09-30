@@ -8,7 +8,7 @@ import Details from "./pages/details/Details";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/errorpage/PageNotFound";
-import Footer from "./components/footer/footer";
+import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 
 function App() {
